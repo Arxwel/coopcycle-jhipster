@@ -28,7 +28,7 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 @Service
 public class MailService {
 
-    private final Logger log = LoggerFactory.getLogger(MailService.class);
+    private final Logger log = LoggerFactory.getLogger("mailService");
 
     private static final String USER = "user";
 

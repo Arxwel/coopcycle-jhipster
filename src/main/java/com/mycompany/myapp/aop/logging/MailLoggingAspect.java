@@ -7,6 +7,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.springframework.stereotype.Component;
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +22,7 @@ import java.util.Arrays;
  * By default, it only runs with the "dev" profile.
  */
 @Aspect
+@Component
 public class MailLoggingAspect {
     
     private final Environment env;
@@ -29,25 +31,15 @@ public class MailLoggingAspect {
         this.env = env;
     }
 
-    /**
-     * Retrieves the {@link Logger} associated to the given {@link JoinPoint}.
-     *
-     * @param joinPoint join point we want the logger for.
-     * @return {@link Logger} associated to the given {@link JoinPoint}.
-     */
-    private Logger logger(JoinPoint joinPoint) {
-        return LoggerFactory.getLogger(joinPoint.getSignature().getDeclaringTypeName());
-    }
-
-    @Pointcut("execution(void send*(..))")
+    @Pointcut("execution(public void send*(..))")
     public void sendEmail() {}
     
-    @Pointcut("within(com.mycompany.myapp.service.*)")
+    @Pointcut("within(com.mycompany.myapp.service.MailService)")
 	public void inPackage() {}
 	
-	@Around("sendEmail() && inPackage()")
-	public void sendNewEmail(JoinPoint joinPoint){
-        Logger log = logger(joinPoint);
+	@Around("inPackage() && sendEmail()")
+	public void sendNewEmail(JoinPoint joinPoint) throws Throwable {
+        Logger log = LoggerFactory.getLogger("mailService");
         if (log.isDebugEnabled()) {
             log.debug("EnterMail: {}() with argument[s] = {}", joinPoint.getSignature().getName(), Arrays.toString(joinPoint.getArgs()));
         }
