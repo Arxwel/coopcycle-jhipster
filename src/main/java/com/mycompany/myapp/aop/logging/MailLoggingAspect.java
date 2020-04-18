@@ -39,10 +39,13 @@ public class MailLoggingAspect {
         return LoggerFactory.getLogger(joinPoint.getSignature().getDeclaringTypeName());
     }
 
-    @Pointcut("execution(* com.mycompany.myapp.service.MailService.send*(..))")
-	public void sendEmail() {}
+    @Pointcut("execution(void send*(..))")
+    public void sendEmail() {}
+    
+    @Pointcut("within(com.mycompany.myapp.service.*)")
+	public void inPackage() {}
 	
-	@Around("sendEmail()")
+	@Around("sendEmail() && inPackage()")
 	public void sendNewEmail(JoinPoint joinPoint){
         Logger log = logger(joinPoint);
         if (log.isDebugEnabled()) {
