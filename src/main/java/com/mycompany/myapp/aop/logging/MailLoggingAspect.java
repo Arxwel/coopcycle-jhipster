@@ -3,16 +3,16 @@ package com.mycompany.myapp.aop.logging;
 import io.github.jhipster.config.JHipsterConstants;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
+
+import com.mycompany.myapp.service.MailService;
+
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.env.Environment;
-import org.springframework.core.env.Profiles;
 
 import java.util.Arrays;
 
@@ -39,7 +39,7 @@ public class MailLoggingAspect {
 	
 	@Around("inPackage() && sendEmail()")
 	public void sendNewEmail(JoinPoint joinPoint) throws Throwable {
-        Logger log = LoggerFactory.getLogger("mailService");
+        Logger log = LoggerFactory.getLogger(MailService.class);
         if (log.isDebugEnabled()) {
             log.debug("EnterMail: {}() with argument[s] = {}", joinPoint.getSignature().getName(), Arrays.toString(joinPoint.getArgs()));
         }

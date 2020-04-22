@@ -46,7 +46,7 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20200422120900",
+    "changelogDate": "20200422190300",
     "javadoc": "The Restaurant entity.",
     "entityTableName": "restaurant",
     "dto": "no",

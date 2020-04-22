@@ -2,7 +2,7 @@
     "name": "Customer",
     "fields": [],
     "relationships": [],
-    "changelogDate": "20200422121100",
+    "changelogDate": "20200422185800",
     "entityTableName": "customer",
     "dto": "no",
     "pagination": "no",

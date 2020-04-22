@@ -2,7 +2,7 @@
     "name": "Deliverer",
     "fields": [],
     "relationships": [],
-    "changelogDate": "20200422121200",
+    "changelogDate": "20200422185900",
     "entityTableName": "deliverer",
     "dto": "no",
     "pagination": "no",

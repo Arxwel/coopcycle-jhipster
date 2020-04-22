@@ -62,7 +62,7 @@
             "ownerSide": false
         }
     ],
-    "changelogDate": "20200422121500",
+    "changelogDate": "20200422185600",
     "javadoc": "The Basket entity.",
     "entityTableName": "basket",
     "dto": "no",
