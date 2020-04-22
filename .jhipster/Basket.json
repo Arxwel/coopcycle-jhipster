@@ -1,0 +1,77 @@
+{
+    "name": "Basket",
+    "fields": [
+        {
+            "fieldName": "basketState",
+            "fieldType": "BasketState",
+            "fieldValues": "NOTFINISHED,VALIDATED,PAID",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "expectedDeliveryTime",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "deliveryAddress",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "280"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "payment",
+            "otherEntityRelationshipName": "basket",
+            "relationshipName": "payment",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "deliverer",
+            "otherEntityRelationshipName": "basket",
+            "relationshipName": "deliverybaskets",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "customer",
+            "otherEntityRelationshipName": "basket",
+            "relationshipName": "customerbaskets",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "restaurantOwner",
+            "otherEntityRelationshipName": "basket",
+            "relationshipName": "restaubaskets",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "product",
+            "otherEntityRelationshipName": "baskets",
+            "relationshipName": "product",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200422121500",
+    "javadoc": "The Basket entity.",
+    "entityTableName": "basket",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

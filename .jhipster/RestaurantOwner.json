@@ -1,0 +1,17 @@
+{
+    "name": "RestaurantOwner",
+    "fields": [],
+    "relationships": [],
+    "changelogDate": "20200422121000",
+    "javadoc": "The Restaurateur entity.",
+    "entityTableName": "restaurant_owner",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

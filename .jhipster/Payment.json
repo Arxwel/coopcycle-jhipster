@@ -1,0 +1,31 @@
+{
+    "name": "Payment",
+    "fields": [
+        {
+            "fieldName": "mode",
+            "fieldType": "PaymentMethod",
+            "fieldValues": "CB,BITCOIN,PAYPAL,IZLY"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "basket",
+            "otherEntityRelationshipName": "payment",
+            "relationshipName": "basket",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200422121700",
+    "javadoc": "The Payment entity.",
+    "entityTableName": "payment",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

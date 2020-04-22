@@ -7,6 +7,17 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
+        "role": "Role",
+        "userAccount": "User Account",
+        "restaurant": "Restaurant",
+        "restaurantOwner": "Restaurant Owner",
+        "customer": "Customer",
+        "deliverer": "Deliverer",
+        "notification": "Notification",
+        "cooperative": "Cooperative",
+        "basket": "Basket",
+        "product": "Product",
+        "payment": "Payment",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="cooperative">
+            <h2><span jhiTranslate="coopcycleApp.cooperative.detail.title">Cooperative</span> {{ cooperative.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="coopcycleApp.cooperative.name">Name</span></dt>
+                <dd>
+                    <span>{{ cooperative.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="coopcycleApp.cooperative.area">Area</span></dt>
+                <dd>
+                    <span>{{ cooperative.area }}</span>
+                </dd>
+                <dt><span jhiTranslate="coopcycleApp.cooperative.dg">Dg</span></dt>
+                <dd>
+                    <div *ngIf="cooperative.dg">
+                        <a [routerLink]="['/user-account', cooperative.dg?.id, 'view']">{{ cooperative.dg?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="coopcycleApp.cooperative.adminedCoops">Admined Coops</span></dt>
+                <dd>
+                    <span *ngFor="let adminedCoops of cooperative.adminedCoops; let last = last">
+                        <a [routerLink]="['/user-account', adminedCoops?.id, 'view']">{{ adminedCoops.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="coopcycleApp.cooperative.cooperatives">Cooperatives</span></dt>
+                <dd>
+                    <span *ngFor="let cooperatives of cooperative.cooperatives; let last = last">
+                        <a [routerLink]="['/user-account', cooperatives?.id, 'view']">{{ cooperatives.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/cooperative', cooperative.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

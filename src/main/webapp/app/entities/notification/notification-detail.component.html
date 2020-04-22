@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="notification">
+            <h2><span jhiTranslate="coopcycleApp.notification.detail.title">Notification</span> {{ notification.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="coopcycleApp.notification.date">Date</span></dt>
+                <dd>
+                    <span>{{ notification.date }}</span>
+                </dd>
+                <dt><span jhiTranslate="coopcycleApp.notification.notification">Notification</span></dt>
+                <dd>
+                    <div *ngIf="notification.notification">
+                        <a [routerLink]="['/basket', notification.notification?.id, 'view']">{{ notification.notification?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="coopcycleApp.notification.notifications">Notifications</span></dt>
+                <dd>
+                    <span *ngFor="let notifications of notification.notifications; let last = last">
+                        <a [routerLink]="['/role', notifications?.id, 'view']">{{ notifications.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/notification', notification.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="basket">
+            <h2><span jhiTranslate="coopcycleApp.basket.detail.title">Basket</span> {{ basket.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="coopcycleApp.basket.basketState">Basket State</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'coopcycleApp.BasketState.' + basket.basketState }}">{{ basket.basketState }}</span>
+                </dd>
+                <dt><span jhiTranslate="coopcycleApp.basket.expectedDeliveryTime">Expected Delivery Time</span></dt>
+                <dd>
+                    <span>{{ basket.expectedDeliveryTime }}</span>
+                </dd>
+                <dt><span jhiTranslate="coopcycleApp.basket.deliveryAddress">Delivery Address</span></dt>
+                <dd>
+                    <span>{{ basket.deliveryAddress }}</span>
+                </dd>
+                <dt><span jhiTranslate="coopcycleApp.basket.payment">Payment</span></dt>
+                <dd>
+                    <div *ngIf="basket.payment">
+                        <a [routerLink]="['/payment', basket.payment?.id, 'view']">{{ basket.payment?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="coopcycleApp.basket.deliverybaskets">Deliverybaskets</span></dt>
+                <dd>
+                    <div *ngIf="basket.deliverybaskets">
+                        <a [routerLink]="['/deliverer', basket.deliverybaskets?.id, 'view']">{{ basket.deliverybaskets?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="coopcycleApp.basket.customerbaskets">Customerbaskets</span></dt>
+                <dd>
+                    <div *ngIf="basket.customerbaskets">
+                        <a [routerLink]="['/customer', basket.customerbaskets?.id, 'view']">{{ basket.customerbaskets?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="coopcycleApp.basket.restaubaskets">Restaubaskets</span></dt>
+                <dd>
+                    <div *ngIf="basket.restaubaskets">
+                        <a [routerLink]="['/restaurant-owner', basket.restaubaskets?.id, 'view']">{{ basket.restaubaskets?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/basket', basket.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

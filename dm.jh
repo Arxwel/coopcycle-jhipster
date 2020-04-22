@@ -1,0 +1,93 @@
+
+/**
+ * The Basket entity.
+ */
+entity Basket {
+  basketState BasketState required,
+  expectedDeliveryTime ZonedDateTime,
+  deliveryAddress String required maxlength(280)
+}
+/**
+ * The Cooperative entity.
+ */
+entity Cooperative {
+  name String required,
+  area String required
+}
+entity Customer
+entity Deliverer
+entity Notification {
+  date ZonedDateTime
+}
+/**
+ * The Payment entity.
+ */
+entity Payment {
+  mode PaymentMethod
+}
+/**
+ * The Product entity.
+ */
+entity Product {
+  name String required,
+  description String minlength(5) maxlength(280),
+  price Float required min(0),
+  disponibility Boolean required
+}
+/**
+ * The Restaurant entity.
+ */
+entity Restaurant {
+  name String required,
+  address String maxlength(280),
+  tel String required pattern(/^((\+)33|0)[1-9](\d{2}){4}$/),
+  description String minlength(20) maxlength(512)
+}
+/**
+ * The Restaurateur entity.
+ */
+entity RestaurantOwner
+entity Role
+/**
+ * The UserAccount entity.
+ */
+entity UserAccount {
+  name String required,
+  surname String required,
+  email String required unique pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/),
+  password String required minlength(8),
+  address String required maxlength(280),
+  phone String required pattern(/^((\+)33|0)[1-9](\d{2}){4}$/)
+}
+enum BasketState {
+  NOTFINISHED,
+  VALIDATED,
+  PAID
+}
+enum PaymentMethod {
+  CB,
+  BITCOIN,
+  PAYPAL,
+  IZLY
+}
+
+relationship OneToOne {
+  Basket{payment} to Payment{basket}
+}
+relationship ManyToOne {
+  Basket{deliverybaskets} to Deliverer,
+  Basket{customerbaskets} to Customer,
+  Basket{restaubaskets} to RestaurantOwner,
+  Cooperative{dg} to UserAccount,
+  Notification{notification} to Basket,
+  Product{products required} to Restaurant,
+  Restaurant{restaurants required} to RestaurantOwner,
+  Role{userroles required} to UserAccount
+}
+relationship ManyToMany {
+  Cooperative{adminedCoops} to UserAccount{adminsys},
+  Cooperative{cooperatives} to UserAccount{members},
+  Notification{notifications} to Role{role required},
+  Product{baskets required} to Basket{product}
+}
+

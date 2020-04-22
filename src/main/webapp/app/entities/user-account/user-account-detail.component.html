@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="userAccount">
+            <h2><span jhiTranslate="coopcycleApp.userAccount.detail.title">User Account</span> {{ userAccount.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="coopcycleApp.userAccount.name">Name</span></dt>
+                <dd>
+                    <span>{{ userAccount.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="coopcycleApp.userAccount.surname">Surname</span></dt>
+                <dd>
+                    <span>{{ userAccount.surname }}</span>
+                </dd>
+                <dt><span jhiTranslate="coopcycleApp.userAccount.email">Email</span></dt>
+                <dd>
+                    <span>{{ userAccount.email }}</span>
+                </dd>
+                <dt><span jhiTranslate="coopcycleApp.userAccount.password">Password</span></dt>
+                <dd>
+                    <span>{{ userAccount.password }}</span>
+                </dd>
+                <dt><span jhiTranslate="coopcycleApp.userAccount.address">Address</span></dt>
+                <dd>
+                    <span>{{ userAccount.address }}</span>
+                </dd>
+                <dt><span jhiTranslate="coopcycleApp.userAccount.phone">Phone</span></dt>
+                <dd>
+                    <span>{{ userAccount.phone }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/user-account', userAccount.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

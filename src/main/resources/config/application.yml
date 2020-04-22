@@ -151,7 +151,7 @@ jhipster:
     description: coopcycle API documentation
     version: 0.0.1
     terms-of-service-url: https://mina.iaeste-france.fr/view/legal-notice.php
-    contact-name: John Doe
+    contact-name: Romain Pasdeloup
     contact-url: mailto:contact@localhost
     contact-email: johndoe@localhost
     license: Coopyleft

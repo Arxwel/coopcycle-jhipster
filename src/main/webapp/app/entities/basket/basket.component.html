@@ -1,0 +1,89 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="coopcycleApp.basket.home.title">Baskets</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-basket" [routerLink]="['/basket/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="coopcycleApp.basket.home.createLabel">
+            Create a new Basket
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="baskets?.length === 0">
+        <span jhiTranslate="coopcycleApp.basket.home.notFound">No baskets found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="baskets?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="coopcycleApp.basket.basketState">Basket State</span></th>
+                    <th scope="col" ><span jhiTranslate="coopcycleApp.basket.expectedDeliveryTime">Expected Delivery Time</span></th>
+                    <th scope="col" ><span jhiTranslate="coopcycleApp.basket.deliveryAddress">Delivery Address</span></th>
+                    <th scope="col" ><span jhiTranslate="coopcycleApp.basket.payment">Payment</span></th>
+                    <th scope="col" ><span jhiTranslate="coopcycleApp.basket.deliverybaskets">Deliverybaskets</span></th>
+                    <th scope="col" ><span jhiTranslate="coopcycleApp.basket.customerbaskets">Customerbaskets</span></th>
+                    <th scope="col" ><span jhiTranslate="coopcycleApp.basket.restaubaskets">Restaubaskets</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let basket of baskets ;trackBy: trackId">
+                    <td><a [routerLink]="['/basket', basket.id, 'view']">{{ basket.id }}</a></td>
+                    <td jhiTranslate="{{ 'coopcycleApp.BasketState.' + basket.basketState }}">{{ basket.basketState }}</td>
+                    <td>{{ basket.expectedDeliveryTime | date:'medium' }}</td>
+                    <td>{{ basket.deliveryAddress }}</td>
+                    <td>
+                        <div *ngIf="basket.payment">
+                            <a [routerLink]="['/payment', basket.payment?.id, 'view']" >{{ basket.payment?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="basket.deliverybaskets">
+                            <a [routerLink]="['/deliverer', basket.deliverybaskets?.id, 'view']" >{{ basket.deliverybaskets?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="basket.customerbaskets">
+                            <a [routerLink]="['/customer', basket.customerbaskets?.id, 'view']" >{{ basket.customerbaskets?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="basket.restaubaskets">
+                            <a [routerLink]="['/restaurant-owner', basket.restaubaskets?.id, 'view']" >{{ basket.restaubaskets?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/basket', basket.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/basket', basket.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(basket)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

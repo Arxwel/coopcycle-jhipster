@@ -42,6 +42,25 @@ public class CacheConfiguration {
             createCache(cm, com.mycompany.myapp.domain.User.class.getName());
             createCache(cm, com.mycompany.myapp.domain.Authority.class.getName());
             createCache(cm, com.mycompany.myapp.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.mycompany.myapp.domain.Role.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Role.class.getName() + ".roles");
+            createCache(cm, com.mycompany.myapp.domain.UserAccount.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.UserAccount.class.getName() + ".adminsys");
+            createCache(cm, com.mycompany.myapp.domain.UserAccount.class.getName() + ".members");
+            createCache(cm, com.mycompany.myapp.domain.Restaurant.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.RestaurantOwner.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Customer.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Deliverer.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Notification.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Notification.class.getName() + ".notifications");
+            createCache(cm, com.mycompany.myapp.domain.Cooperative.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Cooperative.class.getName() + ".adminedCoops");
+            createCache(cm, com.mycompany.myapp.domain.Cooperative.class.getName() + ".cooperatives");
+            createCache(cm, com.mycompany.myapp.domain.Basket.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Basket.class.getName() + ".products");
+            createCache(cm, com.mycompany.myapp.domain.Product.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Product.class.getName() + ".baskets");
+            createCache(cm, com.mycompany.myapp.domain.Payment.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

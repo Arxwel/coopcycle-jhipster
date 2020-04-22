@@ -1,0 +1,21 @@
+{
+  "coopcycleApp": {
+    "restaurantOwner": {
+      "home": {
+        "title": "Restaurant Owners",
+        "createLabel": "Create a new Restaurant Owner",
+        "createOrEditLabel": "Create or edit a Restaurant Owner",
+        "notFound": "No Restaurant Owners found"
+      },
+      "created": "A new Restaurant Owner is created with identifier {{ param }}",
+      "updated": "A Restaurant Owner is updated with identifier {{ param }}",
+      "deleted": "A Restaurant Owner is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Restaurant Owner {{ id }}?"
+      },
+      "detail": {
+        "title": "Restaurant Owner"
+      }
+    }
+  }
+}

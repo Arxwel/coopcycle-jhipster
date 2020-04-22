@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <!--
+        Added the constraints for entity Cooperative.
+    -->
+    <changeSet id="20200422121400-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="dg_id"
+                                 baseTableName="cooperative"
+                                 constraintName="fk_cooperative_dg_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_account"/>
+
+        <addForeignKeyConstraint baseColumnNames="cooperative_id"
+                                 baseTableName="cooperative_admined_coops"
+                                 constraintName="fk_cooperative_admined_coops_cooperative_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cooperative"/>
+
+        <addForeignKeyConstraint baseColumnNames="admined_coops_id"
+                                 baseTableName="cooperative_admined_coops"
+                                 constraintName="fk_cooperative_admined_coops_admined_coops_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_account"/>
+        
+        <addForeignKeyConstraint baseColumnNames="cooperative_id"
+                                 baseTableName="cooperative_cooperatives"
+                                 constraintName="fk_cooperative_cooperatives_cooperative_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cooperative"/>
+
+        <addForeignKeyConstraint baseColumnNames="cooperatives_id"
+                                 baseTableName="cooperative_cooperatives"
+                                 constraintName="fk_cooperative_cooperatives_cooperatives_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_account"/>
+        
+    </changeSet>
+</databaseChangeLog>
